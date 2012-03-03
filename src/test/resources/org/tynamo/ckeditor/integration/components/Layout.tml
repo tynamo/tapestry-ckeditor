@@ -1,0 +1,27 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+	<head>
+		<title>Tapestry Integration Test Application #1</title>
+		<t:doctype name="html" />
+	</head>
+	<body>
+		<div id="header">
+			<h1>Tynamo CKEditor Integration Test Application</h1>
+		</div>
+
+		<div id="content">
+			<table>
+				<tr>
+					<td style="width:100%">
+						<t:body />
+					</td>
+					<td style="vertical-align:top">
+						<t:zone t:id="infoZone" id="infoZone">
+							<t:ckeditorInfo />
+						</t:zone>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

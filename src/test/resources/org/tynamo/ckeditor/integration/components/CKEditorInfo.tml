@@ -1,0 +1,14 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<div
+		style="border: 1px solid silver; padding: 0px 10px; margin: 0px 10px; min-width: 200px">
+
+		<h3 class="heading">CKEditor info</h3>
+
+		<dt>CKEditor instances:</dt>
+		<dd id="${instanceCountId}">This text should be updated via javascript</dd>
+
+		<div id="${instanceInfoId}" />
+	</div>
+</t:container>

@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ckeditor Application Test Suite" annotations="1.5">
+    <test name="Integration Tests">
+        <packages>
+            <package name="org.tynamo.ckeditor"/>
+        </packages>
+    </test>
+</suite>

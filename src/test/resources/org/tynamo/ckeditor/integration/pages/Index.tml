@@ -1,0 +1,17 @@
+<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<div style="padding: 20px">
+		<a href="${ckeditorDemoNoContext}" id="CKEditorDemo">
+			CkEditor Demo
+		</a>
+
+		<br />
+
+		<t:pagelink id="CKEditorDemoWithContext" page="CKEditorDemo"
+			context="CKEDITOR_DEMO_CONTEXT">
+			CkEditor Demo With Context
+		</t:pagelink>
+	</div>
+
+</html>
