@@ -36,36 +36,42 @@ public class TapestryCKEditorIntegrationTest extends AbstractContainerTest
 	protected final WebClient webClient = new WebClient(BrowserVersion.FIREFOX_3);
 
 	@Test
-	public void test_ckeditor_with_prefilled_text() throws Exception
-	{
-		clickOnBasePage("CKEditorDemoWithContext");
-
-		final String textAreaId = "textarea";
-		final String textAreaText = Index.CKEDITOR_DEMO_CONTEXT;
-
-		assertEquals(getElementTextByIdPrefix(textAreaId), textAreaText);
-
-		assertOneCKEditorInstance(textAreaId, textAreaText);
-	}
-
-	@Test
-	public void test_ckeditor_ajax_update() throws Exception
+	public void test_ckeditor_non_ajax() throws Exception
 	{
 		clickOnBasePage("CKEditorDemo");
 
 		final String textAreaIdPrefix = "textarea";
+		final String textAreaText = Index.CKEDITOR_DEMO_CONTEXT;
+
+		// test the text in the textarea
+		assertEquals(getElementTextByIdPrefix(textAreaIdPrefix), textAreaText);
+		assertOneCKEditorInstance(textAreaIdPrefix, textAreaText);
 
 		page = page.getElementById(CKEditorDemo.SET_NEW_TEXT_LINK_ID).click();
-		webClient.waitForBackgroundJavaScript(500);
 
-		// ajax update
+		// submit form
+		page = ((HtmlElement) page.getForms().get(0).getLastChild()).click();
+
+		assertOneCKEditorInstance(textAreaIdPrefix, CKEditorDemo.NEW_TEXT);
+	}
+
+	@Test
+	public void test_ckeditor_ajax() throws Exception
+	{
+		clickOnBasePage("CKEditorDemoAjax");
+
+		final String textAreaIdPrefix = "textarea";
+
+		page = page.getElementById(CKEditorDemo.SET_NEW_TEXT_LINK_ID).click();
+
+		// submit form - ajax update
 		page = ((HtmlElement) page.getForms().get(0).getLastChild()).click();
 		webClient.waitForBackgroundJavaScriptStartingBefore(500);
 
 		assertOneCKEditorInstance(textAreaIdPrefix, CKEditorDemo.NEW_TEXT);
 	}
 
-	private void assertOneCKEditorInstance(final String textAreaId, final String textAreaText)
+	private void assertOneCKEditorInstance(final String textAreaIdPrefix, final String textAreaText)
 	{
 		assertCKEditorInstanceCount(1);
 
@@ -80,7 +86,7 @@ public class TapestryCKEditorIntegrationTest extends AbstractContainerTest
 
 		assertEquals(ddId, "id");
 		// the id may have changed due to ajax updates
-		assertTrue(dtId.startsWith(textAreaId));
+		assertTrue(dtId.startsWith(textAreaIdPrefix));
 		assertEquals(dtData, "data");
 		assertEquals(ddData, textAreaText);
 	}

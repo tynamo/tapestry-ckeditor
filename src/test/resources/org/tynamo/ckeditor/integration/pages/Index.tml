@@ -2,16 +2,15 @@
 	xmlns:p="tapestry:parameter">
 
 	<div style="padding: 20px">
-		<a href="${ckeditorDemoNoContext}" id="CKEditorDemo">
-			CkEditor Demo
+		<a href="${ckeditorDemoAjaxLink}" id="CKEditorDemoAjax">
+			CkEditor Demo (ajax)
 		</a>
 
 		<br />
 
-		<t:pagelink id="CKEditorDemoWithContext" page="CKEditorDemo"
-			context="CKEDITOR_DEMO_CONTEXT">
-			CkEditor Demo With Context
-		</t:pagelink>
+		<a href="${ckeditorDemoLink}" id="CKEditorDemo">
+			CkEditor Demo (non ajax)
+		</a>
 	</div>
 
 </html>

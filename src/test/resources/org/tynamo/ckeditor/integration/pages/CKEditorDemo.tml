@@ -1,15 +1,25 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
 	xmlns:p="tapestry:parameter">
 
-	<t:zone t:id="mainZone" id="mainZone">
-		<t:form zone="^">
-			<t:textarea t:mixins="tynamo/ckeditor" parameters="{'toolbar': 'Full'}"
-				value="text" style="width: 50px; height: 50px" />
-			<a href="#" id="${SET_NEW_TEXT_LINK_ID}"
-				onclick="CKEDITOR.instances['${textAreaId}'].setData('${NEW_TEXT}')">
-				set new text</a>
-			<t:submit value="save" />
-		</t:form>
-	</t:zone>
+	<t:if test="ajax">
+		<t:zone t:id="mainZone" id="mainZone">
+			<t:form zone="^">
+				<t:delegate to="block:ckeditorBlock" />
+			</t:form>
+		</t:zone>
+		<p:else>
+			<t:form>
+				<t:delegate to="block:ckeditorBlock" />
+			</t:form>
+		</p:else>
+	</t:if>
 
+	<t:block t:id="ckeditorBlock">
+		<t:textarea t:mixins="tynamo/ckeditor" parameters="{'toolbar': 'Full'}"
+			value="text" style="width: 50px; height: 50px" />
+		<a href="#" id="${SET_NEW_TEXT_LINK_ID}"
+			onclick="CKEDITOR.instances['${textAreaId}'].setData('${NEW_TEXT}')">
+			set new text</a>
+		<t:submit value="save" />
+	</t:block>
 </html>

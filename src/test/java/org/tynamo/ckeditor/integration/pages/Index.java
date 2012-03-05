@@ -24,8 +24,15 @@ public class Index
 	@Inject
 	private PageRenderLinkSource linkSource;
 
-	public Link getCKEditorDemoNoContext()
+	public Link getCKEditorDemoLink()
 	{
-		return linkSource.createPageRenderLinkWithContext(CKEditorDemo.class);
+		return linkSource.createPageRenderLinkWithContext(CKEditorDemo.class, CKEDITOR_DEMO_CONTEXT);
+	}
+
+	public Link getCKEditorDemoAjaxLink()
+	{
+		Link link = getCKEditorDemoLink();
+		link.addParameter("ajax", "true");
+		return link;
 	}
 }

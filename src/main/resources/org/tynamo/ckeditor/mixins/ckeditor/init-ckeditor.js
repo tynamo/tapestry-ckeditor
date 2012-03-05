@@ -14,8 +14,7 @@ Tapestry.ckeditor = {
 	formEventHandlers : {}
 };
 
-Tapestry.Initializer.initCKEditor = function(textareaId, textareaName,
-		ckeditorInitJSON) {
+Tapestry.Initializer.initCKEditor = function(textareaId, ckeditorInitJSON) {
 
 	/*
 	 * If the textarea with id=ckeditorId cannot be found (probably because if
@@ -27,7 +26,7 @@ Tapestry.Initializer.initCKEditor = function(textareaId, textareaName,
 			CKEDITOR.instances[ckeditorId].destroy(true);
 
 	// init CKEditor for the given textarea
-	CKEDITOR.replace(textareaName, ckeditorInitJSON);
+	CKEDITOR.replace(textareaId, ckeditorInitJSON);
 
 	var updateTextArea = function() {
 		/*

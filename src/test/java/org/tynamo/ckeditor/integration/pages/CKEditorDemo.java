@@ -12,12 +12,16 @@
 
 package org.tynamo.ckeditor.integration.pages;
 
+import javax.inject.Inject;
+
+import org.apache.tapestry5.annotations.ActivationRequestParameter;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.TextArea;
 import org.apache.tapestry5.corelib.components.Zone;
+import org.apache.tapestry5.services.Request;
 import org.tynamo.ckeditor.integration.components.Layout;
 
 public class CKEditorDemo
@@ -26,6 +30,10 @@ public class CKEditorDemo
 	@Property
 	@Persist
 	private String text;
+
+	@ActivationRequestParameter
+	@Property
+	private boolean ajax;
 
 	@InjectComponent
 	private Zone mainZone;
@@ -45,8 +53,14 @@ public class CKEditorDemo
 		return textArea.getClientId();
 	}
 
+	@Inject
+	private Request request;
+
 	Object onSuccess()
 	{
+		if (!request.isXHR())
+			return CKEditorDemo.class;
+
 		layout.updateInfoZone();
 		return mainZone.getBody();
 	}

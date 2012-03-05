@@ -23,7 +23,6 @@ import org.apache.tapestry5.corelib.components.TextArea;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONArray;
 import org.apache.tapestry5.json.JSONObject;
-import org.apache.tapestry5.services.javascript.InitializationPriority;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 @Import(library =
@@ -51,7 +50,6 @@ public class CKEditor
 
 	void afterRender(MarkupWriter writer)
 	{
-		String name = textArea.getControlName();
 		String id = textArea.getClientId();
 
 		JSONObject json = new JSONObject();
@@ -59,6 +57,6 @@ public class CKEditor
 			for (String paramName : parameters.keySet())
 				json.put(paramName, parameters.get(paramName));
 
-		javaScriptSupport.addInitializerCall("initCKEditor", new JSONArray(id, name, json));
+		javaScriptSupport.addInitializerCall("initCKEditor", new JSONArray(id, json));
 	}
 }
