@@ -118,7 +118,23 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>compile</phase>
+						<id>clean</id>
+						<configuration>
+							<task>
+								<echo>Cleaning deployed website</echo>
+							</task>
+							<tasks>
+								<delete dir="src/main/resources/org/tynamo/ckeditor/ckeditor" />
+							</tasks>
+						</configuration>
+						<phase>clean</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>unzip-ckeditor</id>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
