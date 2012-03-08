@@ -15,7 +15,7 @@ package org.tynamo.ckeditor.integration.services;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.annotations.SubModule;
-import org.tynamo.ckeditor.services.CKEditorModule;
+import org.tynamo.ckeditor.CKEditorModule;
 
 @SubModule(CKEditorModule.class)
 public class AppModule

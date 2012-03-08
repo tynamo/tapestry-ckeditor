@@ -26,7 +26,7 @@ import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 @Import(library =
-{ "ckeditor/ckeditor.js", "ckeditor/init-ckeditor.js" })
+{ "../ckeditor/ckeditor.js", "init-ckeditor.js" })
 public class CKEditor
 {
 	@Parameter

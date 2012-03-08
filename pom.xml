@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>tapestry-ckeditor</artifactId>
@@ -14,9 +15,9 @@
 	</parent>
 
 	<properties>
-		<tapestry-release-version>5.3.1</tapestry-release-version>
+		<tapestry-release-version>5.3.2</tapestry-release-version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
@@ -30,12 +31,18 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.tynamo</groupId>
 			<artifactId>tapestry-model-test</artifactId>
 			<version>0.1.0</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.tynamo</groupId>
+			<artifactId>tynamo-common</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 
 	</dependencies>
@@ -49,13 +56,13 @@
 	<distributionManagement>
 		<site>
 			<id>tynamo-site</id>
-			<!-- Note the url. Only static files deployed in /constant/ can be decorated by Unity -->
+			<!-- Note the url. Only static files deployed in /constant/ can be decorated 
+				by Unity -->
 			<url>dav:https://dav.codehaus.org/tynamo/constant/sites/tapestry-ckeditor</url>
 		</site>
 	</distributionManagement>
 
-	<!-- Needed as long as we depend on Tapestry snapshot 
-	-->
+	<!-- Needed as long as we depend on Tapestry snapshot -->
 	<repositories>
 		<repository>
 			<id>apache-ci-snapshots</id>
@@ -99,11 +106,31 @@
 				<configuration>
 					<archive>
 						<manifestEntries>
-							<Tapestry-Module-Classes>org.tynamo.ckeditor.services.CKEditorModule
+							<Tapestry-Module-Classes>org.tynamo.ckeditor.CKEditorModule
 							</Tapestry-Module-Classes>
 						</manifestEntries>
 					</archive>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<unzip
+									src="src/main/resources/org/tynamo/ckeditor/ckeditor_3.6.2.zip"
+									dest="src/main/resources/org/tynamo/ckeditor/" overwrite="true" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- run the test app in the port 8180 with "mvn jetty:run" -->
