@@ -10,10 +10,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * An object for keeping track of the form event handlers added by each CKEDITOR
+ * instance, needed for proper cleanup of destroyed CKEDITOR instances.
+ */
 Tapestry.ckeditor = {
 	formEventHandlers : {}
 };
 
+/**
+ * Tapestry initialization for tapestry-ckeditor.
+ */
 Tapestry.Initializer.initCKEditor = function(textareaId, ckeditorInitJSON) {
 
 	/*
@@ -34,15 +41,16 @@ Tapestry.Initializer.initCKEditor = function(textareaId, ckeditorInitJSON) {
 		 * has been destroyed so remove the corresponding eventHandler listening
 		 * on FORM_PREPARE_FOR_SUBMIT_EVENT,
 		 * 
-		 * else update the textarea before the form is submitted so that the
-		 * corresponding server side property is updated.
+		 * else update the textarea with the ckeditor contentnts before the form
+		 * is submitted so that the corresponding server side property is
+		 * updated.
 		 */
 		var ckeditorInstance = CKEDITOR.instances[textareaId];
 		if (ckeditorInstance == undefined)
 			document.stopObserving(Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT,
 					Tapestry.ckeditor.formEventHandlers[textareaId]);
 		else
-			ckeditorInstance.updateElement();
+			ckeditorInstance.updateElement(); // update the textarea
 	};
 
 	Tapestry.ckeditor.formEventHandlers[textareaId] = updateTextArea;

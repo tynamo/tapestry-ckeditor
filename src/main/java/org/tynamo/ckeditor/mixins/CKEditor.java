@@ -12,7 +12,6 @@
 
 package org.tynamo.ckeditor.mixins;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.tapestry5.MarkupWriter;
@@ -25,10 +24,23 @@ import org.apache.tapestry5.json.JSONArray;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
+/**
+ * A mixin that replaces a {@link TextArea} component with a CKEditor instance. The initial value in
+ * the ckeditor will be the textarea value.
+ * 
+ * @tapestrydoc
+ */
 @Import(library =
 { "../ckeditor/ckeditor.js", "init-ckeditor.js" })
 public class CKEditor
 {
+	/**
+	 * The specific configurations to apply to this editor instance. Configurations set here will
+	 * override global CKEditor settings.
+	 * <p>
+	 * See the <a href="http://docs.cksource.com/ckeditor_api/index.html">ckeditor documentation</a>
+	 * for more details.
+	 */
 	@Parameter
 	private Map<String, ?> parameters;
 
@@ -37,16 +49,6 @@ public class CKEditor
 
 	@Inject
 	private JavaScriptSupport javaScriptSupport;
-
-	Map<String, ?> defaultParameters()
-	{
-		return new HashMap<String, String>()
-		{
-			{
-				put("toolbar", "Full");
-			}
-		};
-	}
 
 	void afterRender(MarkupWriter writer)
 	{
