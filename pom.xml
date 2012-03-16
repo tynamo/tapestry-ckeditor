@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>tapestry-ckeditor</artifactId>
 	<name>Tapestry CKEditor</name>
 	<description>Tynamo CKEditor package for Tapestry 5</description>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<parent>
 		<groupId>org.tynamo</groupId>
@@ -48,9 +47,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:http://svn.codehaus.org/tynamo/trunk/tapestry-ckeditor</connection>
-		<developerConnection>scm:svn:https://svn.codehaus.org/tynamo/trunk/tapestry-ckeditor</developerConnection>
-		<url>http://svn.tynamo.codehaus.org/tynamo/trunk/tapestry-ckeditor</url>
+		<connection>scm:svn:http://svn.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</connection>
+		<developerConnection>scm:svn:https://svn.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</developerConnection>
+		<url>http://svn.tynamo.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</url>
 	</scm>
 
 	<distributionManagement>
@@ -140,9 +139,7 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<unzip
-									src="src/main/resources/org/tynamo/ckeditor/ckeditor_3.6.2.zip"
-									dest="src/main/resources/org/tynamo/ckeditor/" overwrite="true" />
+								<unzip src="src/main/resources/org/tynamo/ckeditor/ckeditor_3.6.2.zip" dest="src/main/resources/org/tynamo/ckeditor/" overwrite="true" />
 							</tasks>
 						</configuration>
 					</execution>
