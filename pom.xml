@@ -5,7 +5,7 @@
 	<name>Tapestry CKEditor</name>
 	<description>Tynamo CKEditor package for Tapestry 5</description>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.tynamo</groupId>
@@ -47,9 +47,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:http://svn.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</connection>
-		<developerConnection>scm:svn:https://svn.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</developerConnection>
-		<url>http://svn.tynamo.codehaus.org/tynamo/tags/tapestry-ckeditor-0.0.1</url>
+		<connection>scm:svn:http://svn.codehaus.org/tynamo/trunk/tapestry-ckeditor</connection>
+		<developerConnection>scm:svn:https://svn.codehaus.org/tynamo/trunk/tapestry-ckeditor</developerConnection>
+		<url>http://svn.tynamo.codehaus.org/tynamo/trunk/tapestry-ckeditor</url>
 	</scm>
 
 	<distributionManagement>
